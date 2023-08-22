@@ -1,28 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fetch HTML</title>
-    <script>
-        function fetchHTML() {
-            var ipAddress = "69.14.211.78";
-            var port = "8000";
-            var url = "http://" + ipAddress + ":" + port;
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var htmlContent = xhr.responseText;
-                    document.getElementById("content").innerHTML = htmlContent;
-                }
-            };
-            xhr.send();
-        }
-    </script>
+    <title>HTML Fetcher</title>
 </head>
 <body>
-    <button onclick="fetchHTML()">Fetch HTML</button>
-    <div id="content"></div>
+    <h1>HTML Fetcher</h1>
+    <form action="http://69.14.211.78:8000" method="GET" target="contentFrame">
+        <input type="submit" value="Fetch HTML">
+    </form>
+    <iframe name="contentFrame" id="contentFrame" frameborder="0"></iframe>
 </body>
 </html>
-
