@@ -1,25 +1,36 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-    <script>
-        function makeHttpObject() {
-  try {return new XMLHttpRequest();}
-  catch (error) {}
-  try {return new ActiveXObject("Msxml2.XMLHTTP");}
-  catch (error) {}
-  try {return new ActiveXObject("Microsoft.XMLHTTP");}
-  catch (error) {}
-
-  throw new Error("Could not create HTTP request object.");
-}
-
-var request = makeHttpObject();
-request.open("GET", "https://home.mynameisthe.xyz:8000", true);
-request.send(null);
-request.onreadystatechange = function() {
-  if (request.readyState == 4)
-    alert(request.responseText);
-};
+    <script type="text/javascript">
+        function loadXMLDoc()
+        {
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {
+              // Code for Internet Explorer 7+, Firefox, Chrome, Opera, and Safari
+              xmlhttp = new XMLHttpRequest();
+            }
+            else
+            {
+                // Code for Internet Explorer 6 and Internet Explorer 5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "69.14.211.78:8000", true);
+            xmlhttp.send();
+        }
     </script>
+</head>
+
+<body>
+    <div id="myDiv"><h2>Let AJAX change this text</h2></div>
+    <button type="button" onclick="loadXMLDoc()">Change Content</button>
 </body>
+
 </html>
